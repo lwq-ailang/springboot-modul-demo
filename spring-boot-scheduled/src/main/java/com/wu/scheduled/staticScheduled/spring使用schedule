@@ -1,0 +1,40 @@
+Spring配置文件xmlns加入
+    xmlns:task="http://www.springframework.org/schema/task
+
+xsi:schemaLocation中加入
+    http://www.springframework.org/schema/task
+    http://www.springframework.org/schema/task/spring-task-3.0.xsd
+
+Spring扫描注解的配置
+    <context:component-scan base-package="com.*.*" />
+
+任务扫描注解
+    <task:executor id="executor" pool-size="5" />
+    <task:scheduler id="scheduler" pool-size="10" />
+    <task:annotation-driven executor="executor" scheduler="scheduler" />
+
+代码实现：
+    注解@Scheduled 可以作为一个触发源添加到一个方法中，例如，以下的方法将以一个固定延迟时间5秒钟调用一次执行，
+    这个周期是以上一个调用任务的完成时间为基准，在上一个任务完成之后，5s后再次执行：
+        @Scheduled(fixedDelay = 5000)
+        public void doSomething() {
+        // something that should execute periodically
+        }
+
+    如果需要以固定速率执行，只要将注解中指定的属性名称改成fixedRate即可，以下方法将以一个固定速率5s来调用一次执行，
+    这个周期是以上一个任务开始时间为基准，从上一任务开始执行后5s再次调用：
+        @Scheduled(fixedRate = 5000)
+        public void doSomething() {
+        // something that should execute periodically
+        }
+
+    如果简单的定期调度不能满足，那么cron表达式提供了可能
+        @Scheduled(cron = "0 0 2 * * ?")　　//每天凌晨两点执行
+        void doSomethingWith(){
+        logger.info("定时任务开始......");
+        long begin = System.currentTimeMillis();
+
+        //执行数据库操作了哦...
+
+        long end = System.currentTimeMillis();
+        logger.info("定时任务结束，共耗时：[" + (end-begin) / 1000 + "]秒");

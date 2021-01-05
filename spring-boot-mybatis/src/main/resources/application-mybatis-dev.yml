@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource #导入druid依赖
+
+#整合MyBatis的核心依赖MyBatis-Spring-Boot-Starter提供：
+#自动检测现有的DataSource
+#将创建并注册 SqlSessionFactory 的实例，该实例使用 SqlSessionFactoryBean 将该DataSource作为输入进行传递
+#将创建并注册从 SqlSessionFactory 中获取的 SqlSessionTemplate 的实例。
+#自动扫描您的mappers，将它们链接到 SqlSessionTemplate 并将其注册到Spring上下文，以便将它们注入到您的bean中。
+#因此，引入该Starter之后，只需要定义一个DataSource即可（application.properties中可配置），
+#它会自动创建使用该DataSource的SqlSessionFactoryBean以及SqlSessionTemplate。
+#会自动扫描你的Mappers，连接到SqlSessionTemplate，并注册到Spring上下文中。
+mybatis:
+  #总配置
+  config-location: classpath:mybatis-config.xml
+  #mapper配置文件
+  #1.mybatis中的mapper-locations是mapper的xml文件位置
+  #2.mybatis中的type-aliases-package是为了配置xml文件中resultType返回值的包位置，如果未配置请使用全包名如下
+  mapper-locations: classpath:mapper/*Mapper.xml #文件使用/分割
+  type-aliases-package: com.wu.mybatis.entity
+    #开启驼峰命名
+  #configuration:
+  #map-underscore-to-camel-case: true
+
+#showSql
+logging:
+  level:
+    com:
+      wu: debug
+
+# mybatis-plus:
+#   global-config:
+#     db-config:
+#       db-type: MYSQL
+#       capital-mode: false #开启大写命名
+#       column-like: true #开启 LIKE 查询

@@ -1,0 +1,37 @@
+# application-mybatis-dev.yml：开发环境
+# application-test.yml：测试环境
+# application-prod.yml：生产环境
+#至于哪个具体的配置文件会被加载，需要在application.yml文件中通过spring.profiles.active属性来设置，其值对应{profile}值。
+spring:
+  profiles:
+    active: jdbc-dev
+
+# thymeleaf静态资源配置
+# 启用模板缓存。
+#thymeleaf:
+  # cache: false
+  # Content-Type value. Content-Type值
+  # content-type: text/html
+  # 启用MVC Thymeleaf视图分辨率。
+  # enabled: true
+  # Template encoding. 模板编码。
+  # encoding: UTF-8
+  # 应用于模板的模板模式。另请参见StandardTemplateModeHandlers。
+  # mode: HTML5
+  # ＃在构建URL时预先查看名称的前缀
+  # prefix: classpath:/templates/
+
+  # 构建URL时附加到查看名称的后缀。
+  # suffix: .html
+
+  # 应该从解决方案中排除的视图名称的逗号分隔列表。
+  # excluded-view-names:
+
+  # 检查模板位置是否存在。
+  # check-template-location: true
+
+  #  链中模板解析器的顺序。
+  # template-resolver-order:
+
+  # 可以解析的视图名称的逗号分隔列表。/ templates / ＃在构建URL时先查看名称的前缀
+  # view-names:

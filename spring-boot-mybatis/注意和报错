@@ -1,0 +1,8 @@
+
+
+
+
+mybatis-spring-boot-starter 和 spring-boot-starter-parent jar包保持相对
+
+springboot 注入mapper No qualifying bean of type：
+    看报错原因：Mapper是接口，由于写成抽象类一直报错

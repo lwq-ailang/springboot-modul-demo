@@ -1,0 +1,23 @@
+CREATE TABLE users(
+  id int(20) unsigned NOT NULL AUTO_INCREMENT,
+  userName varchar(32) NOT NULL,
+  passWord varchar(32) NOT NULL,
+  email varchar(32) NOT NULL,
+  nickName varchar(32) NOT NULL,
+  regTime varchar(32) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+
+
+CREATE TABLE userDetail (
+  id int(20) unsigned NOT NULL AUTO_INCREMENT,
+  userId int(32) NOT NULL,
+  age int(32),
+  realName int(32),
+  status int(2),
+  hobby varchar(32) ,
+  introduction varchar(32) ,
+  lastLoginIp varchar(32) ,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

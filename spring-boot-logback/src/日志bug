@@ -1,0 +1,23 @@
+报错：
+SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+
+原因：
+http://www.slf4j.org/codes.html#StaticLoggerBinder ：
+ 加上slf4j-nop.jar ，slf4j-simple.jar， slf4j-log4j12.jar，slf4j-jdk14.jar或 logback-classic.jar中的其中一个jar包就行（只能是一个，多了就会有冲突）。
+
+解决一：
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-simple</artifactId>
+    <version>1.7.25</version>
+    <scope>compile</scope>
+</dependency>
+
+解决二：
+<dependency>
+    <groupId>ch.qos.logback</groupId>
+    <artifactId>logback-classic</artifactId>
+    <version>1.2.3</version>
+</dependency>

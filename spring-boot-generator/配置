@@ -1,0 +1,6 @@
+Generator配置：
+1.Run --> Edit Configuration
+2.添加Maven配置
+    working directory :选择要运行的空间
+    command line : 添加 mybatis-generator:generate -e
+3.点击运行即可

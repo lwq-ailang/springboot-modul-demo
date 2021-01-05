@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wu.jdbc.mybatis.mapper.test2.User2Mapper" >
+    <resultMap id="BaseResultMap" type="com.wu.jdbc.mybatis.pojo.UserEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id, name, age
+    </sql>
+
+    <select id="getAll" resultMap="BaseResultMap"  >
+        SELECT
+        <include refid="Base_Column_List" />
+        FROM t_user
+    </select>
+
+</mapper>

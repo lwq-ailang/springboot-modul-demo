@@ -1,0 +1,14 @@
+报错：
+Failed to bind properties under 'spring.datasource' to javax.sql.DataSource:
+    Property: spring.datasource.filters
+    Value: stat,wall,log4j
+    Origin: class path resource [application.yml]:24:14
+    Reason: org.apache.log4j.Logger
+Action:Update your application's configuration
+
+查看配置文件，该行代码是：filters: stat,wall,log4j
+看报错原因Reason: org.apache.log4j.Logger，
+解决办法：少了log4j的相关依赖，在pom中引入相关依赖
+
+springboot 注入mapper No qualifying bean of type：
+看报错原因：Mapper是接口，由于写成抽象类一直报错

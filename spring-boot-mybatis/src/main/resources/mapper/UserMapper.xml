@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wu.mybatis.mapper.UserMapper">
+
+    <resultMap id="baseResultMap" type="com.wu.mybatis.entity.User">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="userName" jdbcType="VARCHAR" property="userName"/>
+        <result column="passWord" jdbcType="VARCHAR" property="passWord"/>
+        <result column="realName" jdbcType="VARCHAR" property="realName"/>
+    </resultMap>
+
+    <!--
+        1.namespace中需要与使用@Mapper的接口对应
+        2.UserMapper.xml文件名称必须与使用@Mapper的接口一致
+        3.标签中的id必须与@Mapper的接口中的方法名一致，且参数一致
+    -->
+    <!--第一种： <select id="getUser" resultType="com.maven.mybatis.entity.User"> -->
+    <!-- 第二种：resultMap -->
+    <select id="getUser" resultMap="baseResultMap">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="getUserList" resultMap="">
+        select * from user
+    </select>
+
+</mapper>

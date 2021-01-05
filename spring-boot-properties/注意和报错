@@ -1,0 +1,6 @@
+
+如果@Value${}所包含的键名在application.properties配置文件中不存在的话，会抛出异常：
+org.springframework.beans.factory.BeanCreationException:
+    Error creating bean with name 'configBeanValue': Injection of autowired dependencies failed;
+    nested exception is java.lang.IllegalArgumentException:
+        Could not resolve placeholder 'demo.name' in value "${demo.name}"

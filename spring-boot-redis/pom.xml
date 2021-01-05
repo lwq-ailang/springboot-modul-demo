@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>spring-boot</artifactId>
+        <groupId>com.wu</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spring-boot-redis</artifactId>
+
+    <dependencies>
+        <!--Spring Boot提供的数据访问框架Spring Data Redis基于Jedis。可以通过引入spring-boot-starter-redis来配置依赖关系。-->
+        <!-- 注意：1.5版本的依赖和2.0的依赖不一样。1.5名字里面应该没有“data”, 2.0必须是“spring-boot-starter-data-redis”-->
+        <!--Lettuce 是一个可伸缩线程安全的 Redis 客户端，多个线程可以共享同一个 RedisConnection，它利用优秀 netty NIO 框架来高效地管理多个连接。-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <!-- 1.5的版本默认采用的连接池技术是jedis  2.0以上版本默认连接池是lettuce, 在这里采用jedis，所以需要排除lettuce的jar -->
+<!--            <exclusions>-->
+<!--                <exclusion>-->
+<!--                    <groupId>redis.clients</groupId>-->
+<!--                    <artifactId>jedis</artifactId>-->
+<!--                </exclusion>-->
+<!--                <exclusion>-->
+<!--                    <groupId>io.lettuce</groupId>-->
+<!--                    <artifactId>lettuce-core</artifactId>-->
+<!--                </exclusion>-->
+<!--            </exclusions>-->
+        </dependency>
+
+        <!-- 添加jedis客户端 -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
+
+        <!--spring2.0集成redis所需common-pool2-->
+        <!-- 必须加上，jedis依赖此  -->
+        <!-- spring boot 2.0 的操作手册有标注 大家可以去看看 地址是：https://docs.spring.io/spring-boot/docs/2.0.3.RELEASE/reference/htmlsingle/-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+<!--        &lt;!&ndash; 将作为Redis对象序列化器 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>com.alibaba</groupId>-->
+<!--            <artifactId>fastjson</artifactId>-->
+<!--            <version>1.2.47</version>-->
+<!--        </dependency>-->
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+
+    </dependencies>
+
+</project>

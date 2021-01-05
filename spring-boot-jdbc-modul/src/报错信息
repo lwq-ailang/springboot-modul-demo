@@ -1,0 +1,10 @@
+出错：java.lang.IllegalArgumentException: jdbcUrl is required with driverClassName.
+原因：
+    spring.datasource.url 数据库的 JDBC URL。
+    spring.datasource.jdbc-url 用来重写自定义连接池
+解决：spring.datasource.url -->spring.datasource.jdbc-url.
+
+
+出错：Caused by: java.sql.SQLSyntaxErrorException: Table 'test.hibernate_sequence' doesn't exist
+解决：将@GeneratedValue改为@GeneratedValue(strategy=GenerationType.IDENTITY)解决问题
+
